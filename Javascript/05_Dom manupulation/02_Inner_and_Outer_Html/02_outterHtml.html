@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Outer html Tutorial</title>
+</head>
+<body>
+    <!-- A <div> element with id "myDiv" containing two <p> elements -->
+    <div id="myDiv">
+        <p>This is my paragraph</p>
+        <p>This is my paragraph</p>
+    </div>
+
+    <!-- JavaScript script -->
+    <script>
+        // Accessing the <div> element with id "myDiv"
+        let myDiv = document.getElementById('myDiv');
+
+        // Replacing the entire <div> element with its contents using outerHTML
+        myDiv.outerHTML = '<h1>This is my new text</h1>';
+    </script>
+</body>
+</html>

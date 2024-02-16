@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>getElementBy Name Tutorial</title>
+</head>
+<body>
+    <!-- Three input elements with the name "myName" -->
+    <input name="myName" type="text">
+    <input name="myName" type="text">
+    <input name="myName" type="text">
+    
+    <script>
+        // Getting all elements with the name "myName" using getElementsByName
+        let elements = document.getElementsByName("myName");
+
+        // Looping through each element
+        for (let i = 0; i < elements.length; i++) {
+            // Setting the value of each input element to "This is my new value"
+            elements[i].value = "This is my new value";
+        }
+    </script>
+</body>
+</html>
+
+

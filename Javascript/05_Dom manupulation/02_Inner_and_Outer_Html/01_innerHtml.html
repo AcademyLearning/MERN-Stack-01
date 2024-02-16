@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inner html Tutorial</title>
+</head>
+<body>
+    <!-- A <div> element with id "myDiv" containing two <p> elements -->
+    <div id="myDiv">
+        <p>This is my paragraph</p>
+        <p>This is my paragraph</p>
+    </div>
+
+    <!-- JavaScript script -->
+    <script>
+        // Accessing the <div> element with id "myDiv"
+        let myDiv = document.getElementById('myDiv');
+
+        // Changing the HTML content of the <div> using innerHTML
+        myDiv.innerHTML = '<p>This is my new Text</p>';
+    </script>
+</body>
+</html>
