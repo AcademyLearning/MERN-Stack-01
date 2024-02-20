@@ -4,7 +4,7 @@ import Header from './MyComponent/Header';
 
 function App() {
   return (
-    <Header/>
+    <Header title = {67} searchBar={false}/>
   );
 }
 
