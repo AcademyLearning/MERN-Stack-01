@@ -2,35 +2,46 @@
 import './App.css';
 import Header from './MyComponent/Header';
 import Todos from  './MyComponent/Todos';
+import AddTodo from './MyComponent/AddTodo';
+import Footer from './MyComponent/Footer';
+import React, { useState } from 'react';
 
 function App() {
 
   const onDelete = (todo) =>{
-    console.log("I am ondelete of todo")
+    console.log("I am ondelete of todo" , todo)
+
+    setTodos(todos.filter((e) =>{
+      return e!==todo;
+    })) ;
   }
 
-  let todos = [
-    {
-      sno : 1 , 
-      title : "Go to the gym",
-      desc : "Yon need to go to the gym for exercise "
-    },
-    {
-      sno : 2 , 
-      title : "Go to the Market",
-      desc : "Yon need to go to the Market for shopping "
-    },
-    {
-      sno : 3 , 
-      title : "Go to the college",
-      desc : "Yon need to go to the gym for studies "
-    }
-  ]
+  const  [todos , setTodos]  = useState (
+    [
+      {
+        sno : 1 , 
+        title : "Go to the gym",
+        desc : "Yon need to go to the gym for exercise "
+      },
+      {
+        sno : 2 , 
+        title : "Go to the Market",
+        desc : "Yon need to go to the Market for shopping "
+      },
+      {
+        sno : 3 , 
+        title : "Go to the college",
+        desc : "Yon need to go to the gym for studies "
+      },
+    ]
+  ) ;
 
   return (
     <>
     <Header title = {'Title'} searchBar={false}/>
+    <AddTodo/>
     <Todos todos = {todos} onDelete={onDelete}/>
+    <Footer/>
     </>
   );
 }
