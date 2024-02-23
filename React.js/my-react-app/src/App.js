@@ -16,6 +16,25 @@ function App() {
     })) ;
   }
 
+  const addTodo = (title, desc) => {
+    console.log("I am adding this todo", title, desc) 
+    let sno;
+    if (todos.length === 0) {
+      sno = 0;
+    }
+    else {
+      sno = todos[todos.length - 1].sno + 1;
+    }
+    const myTodo = {
+      sno: sno,
+      title: title,
+      desc: desc,
+    }
+    setTodos([...todos, myTodo]);
+    console.log(myTodo);
+
+  };
+
   const  [todos , setTodos]  = useState (
     [
       {
@@ -39,7 +58,7 @@ function App() {
   return (
     <>
     <Header title = {'Title'} searchBar={false}/>
-    <AddTodo/>
+    <AddTodo addTodo={addTodo}/>
     <Todos todos = {todos} onDelete={onDelete}/>
     <Footer/>
     </>
