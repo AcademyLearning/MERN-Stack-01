@@ -1,26 +1,43 @@
 // import logo from './logo.svg';
 import './App.css';
 import Header from './MyComponent/Header';
+import About from './MyComponent/About';
 import Todos from  './MyComponent/Todos';
 import AddTodo from './MyComponent/AddTodo';
 import Footer from './MyComponent/Footer';
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 
 function App() {
 
-  const onDelete = (todo) =>{
-    console.log("I am ondelete of todo" , todo)
+  let initTodo;
+  if (localStorage.getItem("todos") === null) {
+    initTodo = [];
+  }
+  else {
+    initTodo = JSON.parse(localStorage.getItem("todos"));
+  }
 
-    setTodos(todos.filter((e) =>{
-      return e!==todo;
-    })) ;
+  const onDelete = (todo) => {
+    console.log("I am ondelete of todo", todo);
+    // Deleting this way in react does not work
+    // let index = todos.indexOf(todo);
+    // todos.splice(index, 1);
+
+    setTodos(todos.filter((e) => {
+      return e !== todo;
+    }));
+    console.log("deleted", todos)
+    localStorage.setItem("todos", JSON.stringify(todos));
   }
 
   const addTodo = (title, desc) => {
-    console.log("I am adding this todo", title, desc) 
+    console.log("I am adding this todo", title, desc)
     let sno;
     if (todos.length === 0) {
-      sno = 0;
+      sno = 1;
     }
     else {
       sno = todos[todos.length - 1].sno + 1;
@@ -32,35 +49,37 @@ function App() {
     }
     setTodos([...todos, myTodo]);
     console.log(myTodo);
+  }
 
-  };
+  const [todos, setTodos] = useState(initTodo);
 
-  const  [todos , setTodos]  = useState (
-    [
-      {
-        sno : 1 , 
-        title : "Go to the gym",
-        desc : "Yon need to go to the gym for exercise "
-      },
-      {
-        sno : 2 , 
-        title : "Go to the Market",
-        desc : "Yon need to go to the Market for shopping "
-      },
-      {
-        sno : 3 , 
-        title : "Go to the college",
-        desc : "Yon need to go to the gym for studies "
-      },
-    ]
-  ) ;
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos])
 
   return (
-    <>
-    <Header title = {'Title'} searchBar={false}/>
-    <AddTodo addTodo={addTodo}/>
-    <Todos todos = {todos} onDelete={onDelete}/>
-    <Footer/>
+    <> 
+    <Router>
+      <Header title="My Todos List" searchBar={false} /> 
+      <Switch>
+          {/* Route for Home  */}
+          <Route exact path="/" render={()=>{
+            return(
+            <>
+            <AddTodo addTodo={addTodo} />
+            <Todos todos={todos} onDelete={onDelete} /> 
+            </>)
+          }}> 
+          </Route>
+
+          {/* Route for About  */}
+          <Route exact path="/about">
+            <About/>
+          </Route> 
+
+        </Switch> 
+      <Footer />
+    </Router>
     </>
   );
 }
