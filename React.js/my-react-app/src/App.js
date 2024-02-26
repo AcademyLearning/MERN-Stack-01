@@ -2,12 +2,12 @@
 import './App.css';
 import Header from './MyComponent/Header';
 import About from './MyComponent/About';
-import Todos from  './MyComponent/Todos';
+import Todos from './MyComponent/Todos';
 import AddTodo from './MyComponent/AddTodo';
 import Footer from './MyComponent/Footer';
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function App() {
@@ -58,30 +58,32 @@ function App() {
   }, [todos])
 
   return (
-    <> 
-    <Router>
-      <Header title="My Todos List" searchBar={false} /> 
-      <Switch>
-          {/* Route for Home  */}
-          <Route exact path="/" render={()=>{
-            return(
-            <>
-            <AddTodo addTodo={addTodo} />
-            <Todos todos={todos} onDelete={onDelete} /> 
-            </>)
-          }}> 
-          </Route>
+    <>
+      <Router>
+        <Header title="My Todos List" searchBar={false} />
+        <Routes>
 
-          {/* Route for About  */}
-          <Route exact path="/about">
-            <About/>
-          </Route> 
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <AddTodo addTodo={addTodo} />
+                <Todos todos={todos} onDelete={onDelete} />
+              </>
+            }
+          />
+          <Route exact path="/about" element={<About />} />
 
-        </Switch> 
-      <Footer />
-    </Router>
+        </Routes>
+        <Footer />
+      </Router>
+
     </>
   );
 }
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<App />);
 
 export default App;
