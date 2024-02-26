@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function About() {
   return (
-    <div>
+    <div className='mt-3'>
             This is an about component 
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum corporis odio, nesciunt sed
               eveniet, nemo amet, dignissimos magnam itaque ipsam possimus. Inventore vitae, perferendis
