@@ -2,11 +2,18 @@ import Todo from "./Todo";
 
 import React from 'react'
 
-const TodoListView = () => {
+const TodoListView = (props) => {
   return (
+    <>
+    
     <div>
-      Hello from TodoListView component
+
+      <ul>
+        {props.todoList.map(todo => <Todo todo={todo}/>)}
+      </ul>
+
     </div>
+    </>
   )
 }
 
