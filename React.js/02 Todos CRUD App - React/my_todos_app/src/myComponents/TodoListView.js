@@ -9,7 +9,7 @@ const TodoListView = (props) => {
     <div>
 
       <ul>
-        {props.todoList.map(todo => <Todo todo={todo}/>)}
+        {props.todoList.map(todo => <Todo todo={todo} deleteTodoHandler={props.deleteTodoHandler}/>)}
       </ul>
 
     </div>
