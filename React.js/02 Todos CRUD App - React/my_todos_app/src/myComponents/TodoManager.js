@@ -14,7 +14,7 @@ const TodoManager = () => {
   // Read all todos
   useEffect(() => {
     axios
-      .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todo")
+      .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todos")
       .then((res) => {
         setTodoList(res.data);
       });
@@ -33,7 +33,7 @@ const TodoManager = () => {
 
         // Fetch the updated todo list after successfully adding a new todo
         axios
-          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todo")
+          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todos")
           .then((res) => {
             setTodoList(res.data);
           })
@@ -51,12 +51,12 @@ const TodoManager = () => {
   const deleteTodoHandler = (title) => {
     axios
       .delete(
-        `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/${title}`
+        `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/delete/${title}`
       )
       .then((res) => {
         // Fetch the updated todo list after successfully adding a new todo
         axios
-          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todo")
+          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todos")
           .then((res) => {
             setTodoList(res.data);
           })

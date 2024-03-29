@@ -15,10 +15,16 @@ const Todo = (props) => {
   const updateTodoHandler = async () => {
     try {
       const response = await axios.put(
-        `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/update/${props.todo.title}?desc=${updatedDescription}`,
+        `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/update/${props.todo.title}`,
         {
           title: updatedTitle,
-        }
+          description: updatedDescription
+      },
+      {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      }
       );
       console.log(response.data); // Assuming your backend returns the updated todo object
       // After successful update, toggle editing mode off
