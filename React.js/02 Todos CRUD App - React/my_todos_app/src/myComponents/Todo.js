@@ -15,8 +15,8 @@ const Todo = (props) => {
   const updateTodoHandler = async () => {
     try {
       const response = await axios.put(
-        // `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/update/${props.todo.title}`,
-        `http://127.0.0.1:8000/api/todo/update/${props.todo.title}`,
+        `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/update/${props.todo.title}`,
+        // `http://127.0.0.1:8000/api/todo/update/${props.todo.title}`,
         {
           title: updatedTitle,
           description: updatedDescription,
