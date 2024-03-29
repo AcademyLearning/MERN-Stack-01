@@ -15,21 +15,24 @@ const Todo = (props) => {
   const updateTodoHandler = async () => {
     try {
       const response = await axios.put(
-        `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/update/${props.todo.title}`,
-        // `http://127.0.0.1:8000/api/todo/update/${props.todo.title}`,
+        // `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/update/${props.todo.title}`,
+        `http://127.0.0.1:8000/api/todo/update/${props.todo.title}`,
         {
           title: updatedTitle,
-          description: updatedDescription
-      },
-      {
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      }
+          description: updatedDescription,
+        }
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        // }
       );
       console.log(response.data); // Backend returns the updated todo object
-     
-      setIsEditing(false);   // After successful update, toggle editing mode off
+
+      setIsEditing(false); // After successful update, toggle editing mode off
+
+      // Update the todoList state in TodoManager component
+      // props.setTodoList(response.data); // Update todoList state
     } catch (error) {
       console.error("Error updating todo:", error);
       // Handle error if necessary

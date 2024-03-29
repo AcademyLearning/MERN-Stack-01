@@ -10,6 +10,7 @@ const TodoListView = (props) => {
             key={index}
             todo={todo}
             deleteTodoHandler={props.deleteTodoHandler}
+            // setTodoList={props.setTodoList}
           />
         ))}
       </ul>
